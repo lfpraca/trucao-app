@@ -1,4 +1,4 @@
-import { For, type Component, createSignal } from "solid-js";
+import { For, type Component, createSignal, onCleanup, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 import { PlayerData } from "./models/PlayerData";
 
@@ -20,6 +20,19 @@ const App: Component = () => {
     function handleReset() {
         setPlayersData(x => x.map(x => ({ ...x, actual: 0, bet: 0, lost: 0 })));
     }
+
+    onMount(() => {
+        window.addEventListener("beforeunload", confirmExit);
+    });
+    
+    onCleanup(() => {
+        window.removeEventListener("beforeunload", confirmExit);
+    });
+
+    const confirmExit = (event: any) => {
+        event.returnValue = "_";
+        return "_";
+    };
 
     return (
         <div class="bg-gray-700 text-slate-100 min-h-screen text-3xl p-6">

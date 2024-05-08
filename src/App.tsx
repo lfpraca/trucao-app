@@ -28,18 +28,18 @@ const App: Component = () => {
                     {(x, i) =>
                         <div class="w-60 divide-y divide-sky-500 text-center border-2 border-sky-500 rounded-lg">
                             <div>
-                                <button onClick={() => setPlayersData(i(), x => ({ ...x, lost: x.lost - 1 }))} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">-</button>
+                                <button onClick={() => setPlayersData(i(), "lost", x => x - 1 )} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">-</button>
                                 <span class="text-red-500 font-bold"> {x.lost}/3 </span>
-                                <button onClick={() => setPlayersData(i(), x => ({ ...x, lost: x.lost + 1 }))} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">+</button>
+                                <button onClick={() => setPlayersData(i(), "lost", x => x + 1)} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">+</button>
                             </div>
                             <div>
                                 <span classList={{ "line-through text-red-500": x.lost >= 3 }}>{x.name} </span><button onDblClick={() => setPlayersData(x => x.filter((_, n) => n !== i()))} class="rounded-full w-6 h-6 bg-red-500 hover:bg-red-400 text-xl">x</button>
                             </div>
                             <div>
-                                <button onClick={() => setPlayersData(i(), x => ({ ...x, bet: x.bet - 1 }))} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">-</button><span class="text-xl"> Faz</span> {x.bet} <button onClick={() => setPlayersData(i(), x => ({ ...x, bet: x.bet + 1 }))} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">+</button>
+                                <button onClick={() => setPlayersData(i(), "bet", x => x - 1 )} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">-</button><span class="text-xl"> Faz</span> {x.bet} <button onClick={() => setPlayersData(i(), "bet", x => x + 1)} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">+</button>
                             </div>
                             <div>
-                                <button onClick={() => setPlayersData(i(), x => ({ ...x, actual: x.actual - 1 }))} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">-</button><span class="text-xl"> Fez</span> {x.actual} <button onClick={() => setPlayersData(i(), x => ({ ...x, actual: x.actual + 1 }))} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">+</button>
+                                <button onClick={() => setPlayersData(i(), "actual", x => x - 1 )} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">-</button><span class="text-xl"> Fez</span> {x.actual} <button onClick={() => setPlayersData(i(), "actual", x => x + 1 )} class="rounded-full w-6 h-6 bg-sky-500 hover:bg-sky-400 text-xl">+</button>
                             </div>
                         </div>
                     }
